@@ -1,0 +1,83 @@
+883c883
+< 		  . " - Statistics for $SiteDomain$periodtitle"
+---
+> 		  . " - Advanced Web Statistics for $SiteDomain$periodtitle"
+1002,1003c1002
+< "<b>Statistics $VERSION</b> - <a href=\"http://www.awstats.org\" target=\"awstatshome\">";
+< 			print $Message[169] . " $PROG";
+---
+> "<b>Advanced Web Statistics $VERSION</b>";
+1042c1041
+< 	my $width     = shift || 70;
+---
+> 	my $width     = shift || 100;
+1052c1051
+< 	if ( $width == 70 && $QueryString =~ /buildpdf/i ) {
+---
+> 	if ( $width == 100 && $QueryString =~ /buildpdf/i ) {
+1071c1070,1072
+< 	print "<td class=\"aws_blank\">&nbsp;</td></tr>\n";
+---
+> 	if ( $width < 100 ) {
+> 		print "<td class=\"aws_blank\">&nbsp;</td></tr>\n";
+> 	}
+1073c1074
+< 	if ( $width == 70 && $QueryString =~ /buildpdf/i ) {
+---
+> 	if ( $width == 100 && $QueryString =~ /buildpdf/i ) {
+9307a9309,9314
+> 			elsif ( $f =~ /%extraquot(\d+)$/ ) {
+>                                 $pos_extra[$1] = $i;
+>                                 $i++;
+>                                 push @fieldlib, "extraquot$1";
+>                                 $PerlParsingFormat .= "\\\"([^\\\"]*)\\\"";
+>                         }
+9826,9830c9833
+< 				print "<td align=\"right\" rowspan=\"3\"><a href=\""
+< 				  . XMLEncode($LogoLink)
+< 				  . "\" target=\"awstatshome\"><img src=\"$DirIcons/other/$Logo\" border=\"0\""
+< 				  . AltTitle( ucfirst($PROG) . " Web Site" )
+< 				  . " /></a>";
+---
+> 				print "<td align=\"right\" rowspan=\"3\">&nbsp;";
+9833,9835c9836
+< 				print "<td align=\"right\" rowspan=\"3\"><a href=\""
+< 				  . XMLEncode($LogoLink)
+< 				  . "\" target=\"awstatshome\"><img src=\"$DirIcons/other/$Logo\" border=\"0\" /></a>";
+---
+> 				print "<td align=\"right\" rowspan=\"3\">&nbsp;";
+9890,9894c9891
+< 				print "<td align=\"right\" rowspan=\"2\"><a href=\""
+< 				  . XMLEncode($LogoLink)
+< 				  . "\" target=\"awstatshome\"><img src=\"$DirIcons/other/$Logo\" border=\"0\""
+< 				  . AltTitle( ucfirst($PROG) . " Web Site" )
+< 				  . " /></a>\n";
+---
+> 				print "<td align=\"right\" rowspan=\"3\">&nbsp;";
+9897,9899c9894
+< 				print "<td align=\"right\" rowspan=\"2\"><a href=\""
+< 				  . XMLEncode($LogoLink)
+< 				  . "\" target=\"awstatshome\"><img src=\"$DirIcons/other/$Logo\" border=\"0\" /></a>\n";
+---
+> 				print "<td align=\"right\" rowspan=\"3\">&nbsp;";
+20098a20094,20105
+> 				elsif ( $conditiontype =~ /extraquot(\d+)/i ) {
+>                                         if ($Debug) {
+>                                                 debug(
+> "  Check condition '$conditiontype' must contain '$conditiontypeval' in '$field[$pos_extra[$1]]'",
+>                                                         5
+>                                                 );
+>                                         }
+>                                         if ( $field[ $pos_extra[$1] ] =~ /$conditiontypeval/ ) {
+>                                                 $conditionok = 1;
+>                                                 last;
+>                                         }
+>                                 }
+20196a20204,20210
+> 				elsif ( $rowkeytype =~ /extraquot(\d+)/i ) {
+>                                         if ( $field[ $pos_extra[$1] ] =~ /$rowkeytypeval/ ) {
+>                                                 $rowkeyval = "$1";
+>                                                 $rowkeyok  = 1;
+>                                                 last;
+>                                         }
+>                                 }

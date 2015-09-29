@@ -1,0 +1,23 @@
+/var/log/maillog
+{
+    rotate 3
+    missingok
+    dateext
+    copytruncate
+
+    prerotate
+	/opt/production/mailstats/mailtools/mailBatch.sh --rotate > /dev/null 2>&1
+    endscript
+
+    postrotate
+        /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+    endscript
+}
+
+/opt/production/mailstats/mailtools/mailBatch.log
+{
+    rotate 4
+    size 1M
+    missingok
+    dateext
+}

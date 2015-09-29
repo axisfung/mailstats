@@ -1,0 +1,164 @@
+1c1
+< # AWSTATS CONFIGURE FILE 7.3
+---
+> # STATS CONFIGURE FILE 7.3
+50c50
+< LogFile="/var/log/httpd/mylog.log"
+---
+> LogFile="perl /opt/production/mailstats/mailtools/logresolvemerge.pl /opt/production/storage/data/output/maillog.*.digested |"
+62c62
+< LogType=W
+---
+> LogType=M
+122c122
+< LogFormat=1
+---
+> LogFormat="%time2 %email %email_r %host %host_r %method %url %code %bytesd %extraquot1" 
+153c153
+< SiteDomain=""
+---
+> SiteDomain="mailgw.oss.pccw.com"
+168c168
+< HostAliases="localhost 127.0.0.1 REGEX[myserver\.com$]"
+---
+> HostAliases="postfixsvr 127.0.0.1 localhost"
+203c203
+< DirData="."
+---
+> DirData="/opt/production/mailstatsData/"
+222c222
+< DirIcons="/icon"
+---
+> DirIcons="/awstatsicons"
+838c838
+< LevelForBrowsersDetection=2         # 0 disables Browsers detection.
+---
+> LevelForBrowsersDetection=0         # 0 disables Browsers detection.
+841c841
+< LevelForOSDetection=2               # 0 disables OS detection.
+---
+> LevelForOSDetection=0               # 0 disables OS detection.
+843c843
+< LevelForRefererAnalyze=2            # 0 disables Origin detection.
+---
+> LevelForRefererAnalyze=0            # 0 disables Origin detection.
+845c845
+< LevelForRobotsDetection=2           # 0 disables Robots detection.
+---
+> LevelForRobotsDetection=0           # 0 disables Robots detection.
+847c847
+< LevelForSearchEnginesDetection=2    # 0 disables Search engines detection.
+---
+> LevelForSearchEnginesDetection=0    # 0 disables Search engines detection.
+851c851
+< LevelForFileTypesDetection=2        # 0 disables File types detection.
+---
+> LevelForFileTypesDetection=0        # 0 disables File types detection.
+956c956
+< ShowMonthStats=UVPHB
+---
+> ShowMonthStats=HB
+961c961
+< ShowDaysOfMonthStats=VPHB
+---
+> ShowDaysOfMonthStats=HB
+966c966
+< ShowDaysOfWeekStats=PHB
+---
+> ShowDaysOfWeekStats=HB
+971c971
+< ShowHoursStats=PHB
+---
+> ShowHoursStats=HB
+976c976
+< ShowDomainsStats=PHB
+---
+> ShowDomainsStats=0
+981c981
+< ShowHostsStats=PHBL
+---
+> ShowHostsStats=HBL
+991c991
+< ShowRobotsStats=HBL
+---
+> ShowRobotsStats=0
+1001c1001
+< ShowEMailSenders=0
+---
+> ShowEMailSenders=HBML
+1006c1006
+< ShowEMailReceivers=0
+---
+> ShowEMailReceivers=HBML
+1011c1011
+< ShowSessionsStats=1
+---
+> ShowSessionsStats=0
+1016c1016
+< ShowPagesStats=PBEX
+---
+> ShowPagesStats=0
+1021c1021
+< ShowFileTypesStats=HB
+---
+> ShowFileTypesStats=0
+1031c1031
+< ShowDownloadsStats=HB	
+---
+> ShowDownloadsStats=0
+1036c1036
+< ShowOSStats=1
+---
+> ShowOSStats=0
+1041c1041
+< ShowBrowsersStats=1
+---
+> ShowBrowsersStats=0
+1051c1051
+< ShowOriginStats=PH
+---
+> ShowOriginStats=0
+1056c1056
+< ShowKeyphrasesStats=1
+---
+> ShowKeyphrasesStats=0
+1061c1061
+< ShowKeywordsStats=1
+---
+> ShowKeywordsStats=0
+1066c1066
+< ShowMiscStats=a
+---
+> ShowMiscStats=0
+1071c1071
+< ShowHTTPErrorsStats=1
+---
+> ShowHTTPErrorsStats=0
+1076c1076
+< ShowSMTPErrorsStats=0
+---
+> ShowSMTPErrorsStats=1
+1527a1528,1550
+> #ExtraSectionName1="Top Subject (Top 20)"
+> #ExtraSectionCodeFilter1=""
+> #ExtraSectionCondition1="%extraquot1,Subject=[^-|\s+]"
+> #ExtraSectionFirstColumnTitle1="Subject"
+> #ExtraSectionFirstColumnValues1="extraquot1,Subject=([^-|\s+]*)"
+> #ExtraSectionFirstColumnFormat1="%s"
+> #ExtraSectionStatTypes1=HL
+> #ExtraSectionAddAverageRow1=0
+> #ExtraSectionAddSumRow1=1
+> #MaxNbOfExtra1=20
+> #MinHitExtra1=1
+> 
+> ExtraSectionName1="System Usage (Top 20)"
+> ExtraSectionCodeFilter1=""
+> ExtraSectionCondition1="%extraquot1,Subject=\[[^\s+]*\]"
+> ExtraSectionFirstColumnTitle1="Subject Tag Count (Subject: [servicename] Title)"
+> ExtraSectionFirstColumnValues1="extraquot1,Subject=\[([^\s+]*)\]"
+> ExtraSectionFirstColumnFormat1="%s"
+> ExtraSectionStatTypes1=HL
+> ExtraSectionAddAverageRow1=0
+> ExtraSectionAddSumRow1=1
+> MaxNbOfExtra1=20
+> MinHitExtra1=1

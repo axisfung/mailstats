@@ -1,0 +1,17 @@
+Alias /awstatsclasses "/opt/production/mailstats/wwwroot/classes/"
+Alias /awstatscss "/opt/production/mailstat/wwwroot/css/"
+Alias /awstatsicons "/opt/production/mailstats/wwwroot/icon/"
+Alias /statsweb/ "/opt/production/statsweb/"
+
+
+#
+# This is to permit URL access to scripts/files in AWStats directory.
+#
+<Directory "/opt/production/statsweb">
+    Options none
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+
