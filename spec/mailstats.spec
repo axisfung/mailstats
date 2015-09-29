@@ -103,9 +103,9 @@ fi
 
 
 %changelog
-* Fri Mar 27 2015 Donald Fung <nil@pccw.com> 1.0
+* Fri Mar 27 2015 Axis Fung 1.0
 - Initial release
 
-* Fri Mar 27 2015 Donald Fung <nil@pccw.com> 1.0.1
+* Fri Mar 27 2015 Axis Fung 1.0.1
 - Patching for better logging
 
